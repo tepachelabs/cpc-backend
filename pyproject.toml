@@ -10,6 +10,7 @@ python = "^3.10"
 Flask = {extras = ["async"], version = "^2.3.3"}
 requests = "^2.31.0"
 python-telegram-bot = "^20.4"
+sentry-sdk = {extras = ["flask"], version = "^1.29.2"}
 
 
 [build-system]
