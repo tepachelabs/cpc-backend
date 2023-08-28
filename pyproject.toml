@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "cpc-webhooks"
+version = "0.1.0"
+description = ""
+authors = ["Jose Salcido <jmsalcidoaguilar@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = {extras = ["async"], version = "^2.3.3"}
+requests = "^2.31.0"
+python-telegram-bot = "^20.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
