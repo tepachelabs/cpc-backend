@@ -45,14 +45,16 @@ class TelegramService:
         }
 
     def send_message(self, message: str, parse_mode=ParseMode.MARKDOWN_V2):
-        if parse_mode in self._text_to_parse:
-            message = self._text_to_parse[parse_mode](message)
-
         loop.run_until_complete(
             self._bot.send_message(
                 chat_id=self._chat_id, text=message, parse_mode=parse_mode
             )
         )
+
+    def parse_text(self, text, parse_mode=ParseMode.MARKDOWN_V2):
+        if parse_mode in self._text_to_parse:
+            return self._text_to_parse[parse_mode](text)
+        return text
 
 
 telegram_service = TelegramService()

@@ -38,7 +38,7 @@ class FeedbackSubmission(GoogleFormSubmission):
             if answer == "":
                 text += f"*{question}:*\nNo nos has dejado ningún comentario o recomendación\\."
             else:
-                text += f"*{question}:*\n{answer}"
+                text += f"*{question}:*\n{self._telegram_service.parse_text(answer)}"
             text += "\n\n"
         mentions = []
         for mention in settings.TELEGRAM_MENTIONS:
