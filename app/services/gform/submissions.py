@@ -35,7 +35,9 @@ class FeedbackSubmission(GoogleFormSubmission):
 
         text = f"📝 *Completado: Valoramos tu opinión para mejorar* ✨\n\n"
         for question, answer in responses.items():
-            if answer == "":
+            if type(answer) == list:
+                answer = ", ".join(answer)
+            if answer == "" or len(answer) == 0:
                 text += f"*{question}:*\nNo nos has dejado ningún comentario o recomendación\\."
             else:
                 text += f"*{question}:*\n{self._telegram_service.parse_text(answer)}"
