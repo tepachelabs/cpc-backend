@@ -8,6 +8,11 @@ Webhooks for CPC, written in Python.
   - Access to our secrets too
 - Docker (if you want to run it in a container)
 
+### Install requirements
+```shell
+poetry install --with dev
+```
+
 ## How to run locally (requires env vars)
 ```shell
 PYTHONPATH=$(pwd) poetry run python app/main.py
@@ -19,8 +24,10 @@ PYTHONPATH=$(pwd) doppler run -- poetry run python app/main.py
 ```
 
 ## How to test
+Currently using `unittest` to write tests, nothing fancy just to fix bugs that appears from time to time.
+
 ```shell
-# TODO write tests
+doppler run -- poetry run python -m unittest
 ```
 
 ## How to deploy
