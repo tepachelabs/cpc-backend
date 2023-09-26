@@ -57,3 +57,33 @@ class FeedbackSubmission(GoogleFormSubmission):
             text += ", ".join(mentions)
 
         self._telegram_service.send_message(text)
+
+
+class LedgerSubmission(GoogleFormSubmission):
+    """
+    {
+        "type": "ledger",
+        data: {
+            "responses": dict[str,str]
+        }
+    }
+    """
+
+    def __init__(self, telegram_service: TelegramService) -> None:
+        super().__init__()
+        self._telegram_service = telegram_service
+        self._message_thread_id = settings.TELEGRAM_LEDGER_MESSAGE_THREAD_ID
+
+    def process(self, data: dict):
+        responses = data.get("responses", None)
+        if responses is None:
+            raise WebhookException("Invalid responses")
+
+        text = f"📝 *Compra interna realizada* 💸💸\n\n"
+        for question, answer in responses.items():
+            if type(answer) == list:
+                answer = ", ".join(answer)
+            text += f"*{question}:*\n{self._telegram_service.parse_text(answer)}"
+            text += "\n\n"
+
+        self._telegram_service.send_message(text, message_thread_id=self._message_thread_id)

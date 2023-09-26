@@ -3,6 +3,33 @@ from unittest.mock import MagicMock, patch
 
 from app import settings
 
+
+class TestLedgerSubmission(unittest.TestCase):
+
+    def setUp(self):
+        from app.services.gform.submissions import LedgerSubmission
+        self.telegram_service = MagicMock()
+        self.submission = LedgerSubmission(self.telegram_service)
+
+    def test_process(self):
+        data = {
+            "responses": {
+                "This is another question": "This is another answer",
+                "This is another another question": ["This is another another answer"],
+                "This is another another another question": "*hello there*",
+            }
+        }
+        self.telegram_service.parse_text.side_effect = lambda x: x
+        self.submission.process(data)
+        self.telegram_service.send_message.assert_called_once_with(
+            "📝 *Compra interna realizada* 💸💸\n\n"
+            "*This is another question:*\nThis is another answer\n\n"
+            "*This is another another question:*\nThis is another another answer\n\n"
+            "*This is another another another question:*\n*hello there*\n\n"
+            , message_thread_id=None
+        )
+
+
 class TestFeedbackSubmission(unittest.TestCase):
 
     def setUp(self):
