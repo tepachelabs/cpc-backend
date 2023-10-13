@@ -11,6 +11,8 @@ Flask = {extras = ["async"], version = "^2.3.3"}
 requests = "^2.31.0"
 python-telegram-bot = "^20.4"
 sentry-sdk = {extras = ["flask"], version = "^1.29.2"}
+shopifyapi = "^12.3.0"
+huey = "^2.5.0"
 
 
 [tool.poetry.group.dev.dependencies]
