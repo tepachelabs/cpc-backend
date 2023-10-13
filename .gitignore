@@ -17,6 +17,7 @@ env/
 *.env
 
 # Development specific
+logs/
 *.log
 *.vscode/
 

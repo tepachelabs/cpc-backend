@@ -5,9 +5,9 @@ from app import settings
 
 
 class TestLedgerSubmission(unittest.TestCase):
-
     def setUp(self):
         from app.services.gform.submissions import LedgerSubmission
+
         self.telegram_service = MagicMock()
         self.submission = LedgerSubmission(self.telegram_service)
 
@@ -25,15 +25,15 @@ class TestLedgerSubmission(unittest.TestCase):
             "📝 *Compra interna realizada* 💸💸\n\n"
             "*This is another question:*\nThis is another answer\n\n"
             "*This is another another question:*\nThis is another another answer\n\n"
-            "*This is another another another question:*\n*hello there*\n\n"
-            , message_thread_id=None
+            "*This is another another another question:*\n*hello there*\n\n",
+            message_thread_id=None,
         )
 
 
 class TestFeedbackSubmission(unittest.TestCase):
-
     def setUp(self):
         from app.services.gform.submissions import FeedbackSubmission
+
         self.telegram_service = MagicMock()
         self.submission = FeedbackSubmission(self.telegram_service)
         settings.TELEGRAM_MENTIONS = ["test_user"]
@@ -44,7 +44,10 @@ class TestFeedbackSubmission(unittest.TestCase):
                 "What did you like about our service?": "I liked the fast response times.",
                 "What could we improve?": "I think the UI could be more user-friendly.",
                 "This is another question": ["This is another answer"],
-                "This is yet another question": ["This is yet another answer", "Copy that"],
+                "This is yet another question": [
+                    "This is yet another answer",
+                    "Copy that",
+                ],
             }
         }
         self.telegram_service.parse_text.side_effect = lambda x: x

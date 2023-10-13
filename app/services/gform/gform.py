@@ -1,14 +1,13 @@
 import logging
 
 from app.errors import WebhookException
-from app.services.gform.submissions import GoogleFormSubmission
-from app.settings import SUBMISSION_CONFIG
+from app.services.telegram import TelegramSubmission, telegram_submissions
 
 logger = logging.getLogger(__name__)
 
 
 class GoogleFormsWebhook:
-    def __init__(self, config: dict[str, GoogleFormSubmission]) -> None:
+    def __init__(self, config: TelegramSubmission) -> None:
         super().__init__()
         self._config = config
 
@@ -24,4 +23,4 @@ class GoogleFormsWebhook:
         submission_type.process(webhook_data)
 
 
-google_forms_webhook = GoogleFormsWebhook(config=SUBMISSION_CONFIG)
+google_forms_webhook = GoogleFormsWebhook(config=telegram_submissions)

@@ -3,6 +3,7 @@ from abc import ABC, abstractmethod
 
 from app import settings
 from app.errors import WebhookException
+
 from app.services.telegram import TelegramService
 
 logger = logging.getLogger(__name__)
@@ -86,4 +87,6 @@ class LedgerSubmission(GoogleFormSubmission):
             text += f"*{question}:*\n{self._telegram_service.parse_text(answer)}"
             text += "\n\n"
 
-        self._telegram_service.send_message(text, message_thread_id=self._message_thread_id)
+        self._telegram_service.send_message(
+            text, message_thread_id=self._message_thread_id
+        )

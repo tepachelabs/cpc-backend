@@ -10,6 +10,6 @@ logger = logging.getLogger(__name__)
 huey = FileHuey() if PRODUCTION else MemoryHuey()
 
 
-@huey.periodic_task(crontab(minute='*'))
+@huey.periodic_task(crontab(minute="*"))
 def task_test():
-    print(f"test: {datetime.now()}")
+    logger.info(f"test: {datetime.now()}")

@@ -17,6 +17,7 @@ huey = "^2.5.0"
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
+black = "^23.9.1"
 
 [build-system]
 requires = ["poetry-core"]
