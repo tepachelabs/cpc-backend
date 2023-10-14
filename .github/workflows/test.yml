@@ -1,4 +1,4 @@
-name: Run Tests
+name: Test
 
 on:
   pull_request:
@@ -7,7 +7,7 @@ on:
 
 jobs:
   format:
-    name: Format with Black (Check Only) & Build Docker Image
+    name: Run Django tests
     runs-on: ubuntu-latest
 
     steps:
