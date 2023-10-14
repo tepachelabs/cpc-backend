@@ -1,4 +1,4 @@
-# cpc-webhooks
+# cpc-tooling
 Webhooks for CPC, written in Python.
 
 ## Requirements
@@ -15,19 +15,19 @@ poetry install --with dev
 
 ## How to run locally (requires env vars)
 ```shell
-PYTHONPATH=$(pwd) poetry run python app/main.py
+poetry run python manage.py runserver
 ```
 
 ## How to run locally with doppler
 ```shell
-PYTHONPATH=$(pwd) doppler run -- poetry run python app/main.py
+doppler run -- poetry run python manage.py runserver
 ```
 
 ## How to test
 Currently using `unittest` to write tests, nothing fancy just to fix bugs that appears from time to time.
 
 ```shell
-doppler run -- poetry run python -m unittest
+doppler run -- poetry run python manage.py test
 ```
 
 ## How to deploy
