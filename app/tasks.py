@@ -3,7 +3,7 @@ from datetime import datetime
 
 from huey import MemoryHuey, FileHuey, crontab
 
-from app.settings import PRODUCTION
+from cpc.settings import PRODUCTION
 
 logger = logging.getLogger(__name__)
 

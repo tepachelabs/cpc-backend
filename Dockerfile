@@ -33,11 +33,7 @@ RUN pip install poetry && \
 
 COPY . /app
 
-EXPOSE 3000
-
-# Define environment variables
-ENV FLASK_APP=flask.py
-ENV FLASK_ENV=production
+EXPOSE 8000
 
 # Install Gunicorn and Huey
 RUN pip install gunicorn

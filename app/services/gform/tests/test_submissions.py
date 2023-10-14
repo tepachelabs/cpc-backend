@@ -1,7 +1,7 @@
 import unittest
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
-from app import settings
+from cpc import settings
 
 
 class TestLedgerSubmission(unittest.TestCase):

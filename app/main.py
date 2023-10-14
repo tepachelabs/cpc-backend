@@ -3,7 +3,7 @@ from datetime import datetime
 
 from flask import Flask, request, jsonify
 
-from app import settings
+from cpc import settings
 from app.errors import WebhookException
 from app.services.gform.gform import google_forms_webhook
 

@@ -4,7 +4,7 @@ from typing import Union, Optional
 from telegram import Bot
 from telegram.constants import ParseMode
 
-from app import settings
+from cpc import settings
 
 loop = asyncio.get_event_loop()
 

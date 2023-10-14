@@ -1,7 +1,7 @@
 import logging
 from abc import ABC, abstractmethod
 
-from app import settings
+from cpc import settings
 from app.errors import WebhookException
 
 from app.services.telegram import TelegramService
