@@ -28,6 +28,9 @@ jobs:
       - name: Run Black
         run: poetry run black . --check --diff
 
+      - name: Run Tests
+        run: poetry run python manage.py test
+
       - id: get_commit_hash
         run: echo "::set-output name=hash::$(git rev-parse --short HEAD)"
 
