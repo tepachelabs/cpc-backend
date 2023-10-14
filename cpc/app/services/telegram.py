@@ -67,17 +67,4 @@ class TelegramService:
         return text
 
 
-class TelegramSubmission:
-    def __init__(self, telegram_service=None):
-        from app.services.gform.submissions import FeedbackSubmission, LedgerSubmission
-
-        self._SUBMISSION_CONFIG = {
-            "feedback": FeedbackSubmission(telegram_service),
-            "ledger": LedgerSubmission(telegram_service),
-        }
-
-    def get_instance(self, submission_type: str):
-        return self._SUBMISSION_CONFIG.get(submission_type, None)
-
-
-telegram_submissions = TelegramSubmission(telegram_service=TelegramService())
+telegram_service = TelegramService()

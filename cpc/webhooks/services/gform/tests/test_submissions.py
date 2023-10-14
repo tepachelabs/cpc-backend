@@ -6,7 +6,7 @@ from cpc import settings
 
 class TestLedgerSubmission(unittest.TestCase):
     def setUp(self):
-        from app.services.gform.submissions import LedgerSubmission
+        from cpc.webhooks.services.gform.submissions import LedgerSubmission
 
         self.telegram_service = MagicMock()
         self.submission = LedgerSubmission(self.telegram_service)
@@ -32,7 +32,7 @@ class TestLedgerSubmission(unittest.TestCase):
 
 class TestFeedbackSubmission(unittest.TestCase):
     def setUp(self):
-        from app.services.gform.submissions import FeedbackSubmission
+        from cpc.webhooks.services.gform.submissions import FeedbackSubmission
 
         self.telegram_service = MagicMock()
         self.submission = FeedbackSubmission(self.telegram_service)

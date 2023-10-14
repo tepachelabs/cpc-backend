@@ -2,9 +2,9 @@ import logging
 from abc import ABC, abstractmethod
 
 from cpc import settings
-from app.errors import WebhookException
+from cpc.webhooks.errors import WebhookException
 
-from app.services.telegram import TelegramService
+from cpc.app.services.telegram import TelegramService
 
 logger = logging.getLogger(__name__)
 
