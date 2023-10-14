@@ -4,7 +4,7 @@ from typing import Union, Optional
 from telegram import Bot
 from telegram.constants import ParseMode
 
-from app import settings
+from cpc import settings
 
 loop = asyncio.get_event_loop()
 
@@ -40,9 +40,9 @@ class MarkdownV2Parser:
 
 
 class TelegramService:
-    def __init__(self) -> None:
+    def __init__(self, bot_token=None) -> None:
         super().__init__()
-        self._bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
+        self._bot = Bot(token=bot_token)
         self._parse_mode_config = {ParseMode.MARKDOWN_V2: MarkdownV2Parser.parse}
 
     def send_message(
@@ -65,19 +65,3 @@ class TelegramService:
         if parse_mode in self._parse_mode_config:
             return self._parse_mode_config[parse_mode](text)
         return text
-
-
-class TelegramSubmission:
-    def __init__(self, telegram_service=None):
-        from app.services.gform.submissions import FeedbackSubmission, LedgerSubmission
-
-        self._SUBMISSION_CONFIG = {
-            "feedback": FeedbackSubmission(telegram_service),
-            "ledger": LedgerSubmission(telegram_service),
-        }
-
-    def get_instance(self, submission_type: str):
-        return self._SUBMISSION_CONFIG.get(submission_type, None)
-
-
-telegram_submissions = TelegramSubmission(telegram_service=TelegramService())

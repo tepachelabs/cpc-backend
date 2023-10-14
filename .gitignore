@@ -44,6 +44,7 @@ settings_local.py
 
 # Ignore database files
 *.db
+*.sqlite3
 
 ## Ignore package lock files
 #poetry.lock

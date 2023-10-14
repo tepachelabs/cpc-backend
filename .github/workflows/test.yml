@@ -1,0 +1,29 @@
+name: Test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  format:
+    name: Run Django tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.10.10
+
+      - name: Install Poetry
+        run: curl -sSL https://install.python-poetry.org | python -
+
+      - name: Install project dependencies
+        run: poetry run pip install black && poetry install
+
+      - name: Run Tests
+        run: poetry run python manage.py test
