@@ -40,9 +40,9 @@ class MarkdownV2Parser:
 
 
 class TelegramService:
-    def __init__(self) -> None:
+    def __init__(self, bot_token=None) -> None:
         super().__init__()
-        self._bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
+        self._bot = Bot(token=bot_token)
         self._parse_mode_config = {ParseMode.MARKDOWN_V2: MarkdownV2Parser.parse}
 
     def send_message(
@@ -65,6 +65,3 @@ class TelegramService:
         if parse_mode in self._parse_mode_config:
             return self._parse_mode_config[parse_mode](text)
         return text
-
-
-telegram_service = TelegramService()
