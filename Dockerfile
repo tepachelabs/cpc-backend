@@ -38,6 +38,7 @@ EXPOSE 8000
 # Install Gunicorn and Huey
 RUN pip install gunicorn
 RUN pip install huey
+RUN poetry run python manage.py collectstatic
 
 # Copy the Supervisor configuration file
 COPY ./devops/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
