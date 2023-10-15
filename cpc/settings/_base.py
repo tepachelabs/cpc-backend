@@ -26,7 +26,10 @@ PRODUCTION = ENVIRONMENT in ["PROD", "prod", "production", "PRODUCTION"]
 DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["*"]
-CSRF_TRUSTED_ORIGINS = ["https://*", "http://*"]
+if PRODUCTION:
+    CSRF_TRUSTED_ORIGINS = [f"https://{os.getenv('APP_HOSTNAME')}"]
+else:
+    CSRF_TRUSTED_ORIGINS = [ALLOWED_HOSTS.copy()]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
