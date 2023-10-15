@@ -26,6 +26,7 @@ PRODUCTION = ENVIRONMENT in ["PROD", "prod", "production", "PRODUCTION"]
 DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = ["https://*", "http://*"]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
