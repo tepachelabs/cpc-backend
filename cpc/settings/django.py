@@ -23,4 +23,4 @@ TEMPLATES = [
 
 STATIC_ROOT = f"{BASE_DIR}/public"
 STATIC_URL = "static/"
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
