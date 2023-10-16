@@ -29,7 +29,7 @@ ALLOWED_HOSTS = ["*"]
 if PRODUCTION:
     CSRF_TRUSTED_ORIGINS = [f"https://{os.getenv('APP_HOSTNAME')}"]
 else:
-    CSRF_TRUSTED_ORIGINS = [ALLOWED_HOSTS.copy()]
+    CSRF_TRUSTED_ORIGINS = ["http://*", "https://*"]
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
