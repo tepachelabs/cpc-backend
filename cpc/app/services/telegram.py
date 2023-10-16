@@ -1,12 +1,9 @@
-import asyncio
 from typing import Union, Optional
 
 from telegram import Bot
 from telegram.constants import ParseMode
 
 from cpc import settings
-
-loop = asyncio.get_event_loop()
 
 
 class MarkdownV2Parser:
@@ -52,6 +49,9 @@ class TelegramService:
         message_thread_id: Optional[int] = None,
         parse_mode=ParseMode.MARKDOWN_V2,
     ):
+        import asyncio
+
+        loop = asyncio.new_event_loop()
         loop.run_until_complete(
             self._bot.send_message(
                 chat_id=chat_id,
@@ -60,6 +60,7 @@ class TelegramService:
                 message_thread_id=message_thread_id,
             )
         )
+        loop.close()
 
     def parse_text(self, text, parse_mode=ParseMode.MARKDOWN_V2):
         if parse_mode in self._parse_mode_config:
