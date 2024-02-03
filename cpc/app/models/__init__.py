@@ -1,0 +1,1 @@
+from .reminders import ProductReminder

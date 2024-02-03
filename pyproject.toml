@@ -12,7 +12,6 @@ python = "^3.10"
 requests = "^2.31.0"
 python-telegram-bot = "^20.7"
 shopifyapi = "^12.4.0"
-huey = "^2.5.0"
 django = "^4.2.6"
 sentry-sdk = {extras = ["django"], version = "^1.32.0"}
 djangorestframework = "^3.14.0"
@@ -20,7 +19,9 @@ whitenoise = "^6.6.0"
 psycopg2-binary = "^2.9.9"
 dj-database-url = "^2.1.0"
 django-extensions = "^3.2.3"
-rollbar = "^1.0.0"
+celery = {extras = ["redis"], version = "^5.3.6"}
+django-celery-beat = "^2.5.0"
+logtail-python = "^0.2.10"
 
 
 [tool.poetry.group.dev.dependencies]

@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from cpc.app.models.reminders import Reminder
+from .models import ProductReminder
 
 
-@admin.register(Reminder)
-class ReminderAdmin(admin.ModelAdmin):
-    list_display = ("slug", "created", "modified")
+@admin.register(ProductReminder)
+class ProductReminderAdmin(admin.ModelAdmin):
+    list_display = ("id", "title", "shopify_id")

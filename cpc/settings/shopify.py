@@ -1,0 +1,11 @@
+import os
+
+SHOPIFY_API_KEY = os.getenv("SHOPIFY_API_KEY", None)
+SHOPIFY_SECRET_KEY = os.getenv("SHOPIFY_SECRET_KEY", None)
+SHOPIFY_ACCESS_TOKEN = os.getenv("SHOPIFY_ACCESS_TOKEN", None)
+SHOPIFY_SHOP_NAME = os.getenv("SHOPIFY_SHOP_NAME", None)
+SHOPIFY_API_VERSION = os.getenv("SHOPIFY_API_VERSION", "2024-01")
+
+SHOPIFY_SHOP_URL = (
+    f"https://{SHOPIFY_SHOP_NAME}.myshopify.com" if SHOPIFY_SHOP_NAME else None
+)

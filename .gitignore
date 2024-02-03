@@ -55,3 +55,7 @@ settings_local.py
 # Ignore operating system generated files
 .DS_Store
 Thumbs.db
+
+
+# Celery and Beat
+celerybeat-schedule

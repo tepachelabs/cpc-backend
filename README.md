@@ -7,6 +7,7 @@ Backend for all CPC related apps, written in Python.
 - Doppler CLI
   - Access to our secrets too
 - Docker (if you want to run it in a container)
+- Redis (for CRON jobs)
 
 ## For macOS devs:
 ```shell
@@ -21,6 +22,12 @@ sudo ln -s $(brew --prefix)/opt/libpq/bin/psql /usr/local/bin/psql
 
 ## For Others:
 Figure it out.
+
+### Docker Compose
+```shell
+# Start the DB and Redis :)
+docker-compose up -d
+```
 
 ### Install requirements
 ```shell

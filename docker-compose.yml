@@ -2,19 +2,19 @@ version: '3'
 services:
   postgres:
     image: postgres:latest
-    container_name: cpc_db
+    container_name: cpc-db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: cpc_db
     ports:
-      - "5432:5432"
+      - "5442:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
   redis:
     image: redis:latest
-    container_name: cpc_redis
+    container_name: cpc-redis
     ports:
       - "6379:6379"
 

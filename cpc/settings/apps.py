@@ -10,4 +10,5 @@ INSTALLED_APPS = [
     # CPC apps
     "cpc.app",
     "cpc.webhooks",
+    "cpc.shopify_backend",
 ]

@@ -21,4 +21,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("cpc.app.urls"), name="app"),
     path("webhooks/", include("cpc.webhooks.urls"), name="webhooks"),
+    path("shopify/", include("cpc.shopify_backend.urls"), name="shopify_backend"),
 ]
