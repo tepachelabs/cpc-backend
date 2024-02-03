@@ -7,4 +7,5 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
+    "rollbar.contrib.django.middleware.RollbarNotifierMiddleware",
 ]

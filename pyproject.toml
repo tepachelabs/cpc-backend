@@ -1,15 +1,17 @@
 [tool.poetry]
 name = "cpc-webhooks"
-version = "0.1.0"
+version = "1.0.0"
 description = ""
-authors = ["Jose Salcido <jmsalcidoaguilar@gmail.com>"]
+authors = [
+    "Jose Salcido <jmsalcidoaguilar@gmail.com>",
+]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
 requests = "^2.31.0"
-python-telegram-bot = "^20.4"
-shopifyapi = "^12.3.0"
+python-telegram-bot = "^20.7"
+shopifyapi = "^12.4.0"
 huey = "^2.5.0"
 django = "^4.2.6"
 sentry-sdk = {extras = ["django"], version = "^1.32.0"}
@@ -18,11 +20,12 @@ whitenoise = "^6.6.0"
 psycopg2-binary = "^2.9.9"
 dj-database-url = "^2.1.0"
 django-extensions = "^3.2.3"
+rollbar = "^1.0.0"
 
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
-black = "^23.9.1"
+black = "^24.1.1"
 gunicorn = "^21.2.0"
 
 [build-system]

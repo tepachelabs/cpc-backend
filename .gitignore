@@ -15,6 +15,8 @@ build/
 venv/
 env/
 *.env
+# poetry just in case
+.venv/
 
 # Development specific
 logs/

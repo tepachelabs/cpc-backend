@@ -1,5 +1,5 @@
-# cpc-tooling
-Webhooks for CPC, written in Python.
+# cpc-backend
+Backend for all CPC related apps, written in Python.
 
 ## Requirements
 - Poetry
@@ -7,6 +7,20 @@ Webhooks for CPC, written in Python.
 - Doppler CLI
   - Access to our secrets too
 - Docker (if you want to run it in a container)
+
+## For macOS devs:
+```shell
+brew install poetry
+brew install python@3.10
+brew install doppler
+brew install libpq # install only the postgresql libs not fully (if you want to use docker)
+
+## This might be different.
+sudo ln -s $(brew --prefix)/opt/libpq/bin/psql /usr/local/bin/psql
+```
+
+## For Others:
+Figure it out.
 
 ### Install requirements
 ```shell

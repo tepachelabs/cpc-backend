@@ -4,6 +4,7 @@ from .databases import *
 from .django import *
 from .logging import *
 from .middlewares import *
+from .rollbar import *
 from .sentry import *
 from .telegram import *
 from .webhook import *

@@ -4,9 +4,13 @@ import dj_database_url
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-from cpc.settings import BASE_DIR
+from cpc.settings import BASE_DIR, PRODUCTION
 
-DATABASES = {"default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))}
+# TODO change this to use the DATABASE_URL
+if PRODUCTION:
+    DATABASES = {
+        "default": dj_database_url.config(default=os.environ.get("DATABASE_URL"))
+    }
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
