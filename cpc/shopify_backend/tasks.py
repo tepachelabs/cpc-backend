@@ -32,14 +32,12 @@ def inventory_reminder():
         if product is not None:
             if len(product.variants) == 1:
                 messages.append(
-                    f"> {product.variants[0].inventory_quantity} \\-\\-\\-\\> {product.title}"
+                    f"> {telegram.parse_text(product.variants[0].inventory_quantity)} \\-\\-\\-\\> {product.title}"
                 )
             else:
                 message = f"🏷️ *{product.title}*:\n"
                 for variant in product.variants:
-                    message += (
-                        f"> {variant.inventory_quantity} \\-\\-\\-\\> {variant.title}\n"
-                    )
+                    message += f"> {telegram.parse_text(variant.inventory_quantity)} \\-\\-\\-\\> {variant.title}\n"
                 messages.append(message)
         else:
             logger.error(f"ProductReminder {product_reminder.id} not found in Shopify.")
