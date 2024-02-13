@@ -8,7 +8,7 @@ from cpc import settings
 
 class MarkdownV2Parser:
     @staticmethod
-    def parse(text):
+    def parse(text: str):
         special_characters = [
             "_",
             "*",
@@ -65,6 +65,7 @@ class TelegramService:
         loop.close()
 
     def parse_text(self, text, parse_mode=ParseMode.MARKDOWN_V2):
+        text = str(text)
         if parse_mode in self._parse_mode_config:
             return self._parse_mode_config[parse_mode](text)
         return text
