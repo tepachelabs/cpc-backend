@@ -45,5 +45,8 @@ RUN poetry run python manage.py collectstatic
 # Copy the Supervisor configuration file
 COPY ./devops/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
+# Run migrations
+RUN doppler run -- poetry run python manage.py migrate
+
 # Start Supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
