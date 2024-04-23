@@ -11,12 +11,37 @@ services:
       - "5442:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    networks:
+      - cpc-network
 
   redis:
     image: redis:latest
     container_name: cpc-redis
     ports:
       - "6379:6379"
+    networks:
+      - cpc-network
+
+  app:
+    build: .
+    container_name: cpc-app
+    ports:
+      - "8000:8000"
+    networks:
+      - cpc-network
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      - DOPPLER_TOKEN=${DOPPLER_TOKEN}
+      - DOPPLER_PROJECT
+      - DOPPLER_ENVIRONMENT
+    volumes:
+      - .:/app
+    restart: 'no'
 
 volumes:
   postgres-data:
+
+networks:
+  cpc-network:

@@ -21,12 +21,12 @@ sudo ln -s $(brew --prefix)/opt/libpq/bin/psql /usr/local/bin/psql
 ```
 
 ## For Others:
-Figure it out.
+Figure it out yourself, or ask for help.
 
 ### Docker Compose
 ```shell
 # Start the DB and Redis :)
-docker-compose up -d
+docker-compose up postgres redis -d
 ```
 
 ### Install requirements
@@ -42,6 +42,12 @@ poetry run python manage.py runserver
 ## How to run locally with doppler
 ```shell
 doppler run -- poetry run python manage.py runserver
+```
+
+## With Docker Compose
+**BEWARE:** Requires a doppler token, get it from doppler.
+```shell
+docker-compose up app
 ```
 
 ## How to test

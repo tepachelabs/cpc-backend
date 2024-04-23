@@ -22,6 +22,7 @@ django-extensions = "^3.2.3"
 celery = {extras = ["redis"], version = "^5.3.6"}
 django-celery-beat = "^2.5.0"
 logtail-python = "^0.2.10"
+uvicorn = "^0.29.0"
 
 
 [tool.poetry.group.dev.dependencies]

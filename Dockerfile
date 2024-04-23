@@ -37,9 +37,8 @@ COPY . /app
 
 EXPOSE 8000
 
-# Install Gunicorn and Huey
+# Install Gunicorn
 RUN pip install gunicorn
-RUN pip install huey
 RUN poetry run python manage.py collectstatic
 
 # Copy the Supervisor configuration file
