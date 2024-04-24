@@ -39,7 +39,7 @@ EXPOSE 8000
 
 # Install Gunicorn
 RUN pip install gunicorn
-RUN poetry run python manage.py collectstatic
+RUN doppler run -- poetry run python manage.py collectstatic
 
 # Copy the Supervisor configuration file
 COPY ./devops/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
