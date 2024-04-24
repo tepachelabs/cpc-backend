@@ -4,8 +4,8 @@ FROM python:3.10-alpine
 ARG DOPPLER_TOKEN
 ENV DOPPLER_TOKEN=$DOPPLER_TOKEN
 
-
-# DOPPLER_TOKEN should be enough but adding in case of.
+# DOPPLER_TOKEN is enough in production
+# PASS THESE ON DEVELOPMENT IF NO TOKEN IS PROVIDED WITH SETUP
 ARG DOPPLER_PROJECT
 ENV DOPPLER_PROJECT=$DOPPLER_PROJECT
 
@@ -31,7 +31,7 @@ WORKDIR /app
 RUN pip install --upgrade pip
 RUN pip install poetry && \
     poetry config virtualenvs.create false && \
-    poetry install --no-dev --no-interaction --no-ansi
+    poetry install --no-dev --no-interaction --no-ansi --no-root
 
 COPY . /app
 
@@ -39,6 +39,8 @@ EXPOSE 8000
 
 # Install Gunicorn
 RUN pip install gunicorn
+
+# Run the collectstatic command
 RUN doppler run -- poetry run python manage.py collectstatic
 
 # Copy the Supervisor configuration file
