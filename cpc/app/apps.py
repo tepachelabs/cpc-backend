@@ -12,12 +12,3 @@ class CpcAppConfig(AppConfig):
 
     def ready(self):
         super().ready()
-
-        # TODO Refactor this remove it from here
-        telegram = TelegramService(settings.TELEGRAM_BOT_TOKEN)
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        try:
-            loop.run_until_complete(telegram.add_commands())
-        finally:
-            loop.close()

@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     path("gform/", views.GoogleFormWebhookView.as_view(), name="google_form_webhook"),
+    path("telegram/", views.telegram_webhook, name="telegram_webhook"),
 ]
