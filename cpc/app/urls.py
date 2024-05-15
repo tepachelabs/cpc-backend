@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     path("", views.index_view, name="index"),
+    path("privacy", views.privacy_view, name="privacy-politic"),
 ]

@@ -1,0 +1,148 @@
+{% extends './base.html' %}
+
+{% block title %}
+    {% if request.LANGUAGE_CODE == 'es' or request.LANGUAGE_CODE == 'es-es' or request.LANGUAGE_CODE == 'es-mx' %}
+        Política de privacidad
+    {% else %}
+        Privacy Policy
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+    </style>
+
+    {% if request.LANGUAGE_CODE == 'es' %}
+        <h1>Política de privacidad</h1>
+
+        <p>Culto Perro Cafe se compromete a garantizar que su privacidad esté protegida. Esta Política de Privacidad
+            explica cómo
+            utilizamos la información que recopilamos sobre usted y los procedimientos que tenemos en lugar para
+            salvaguardar
+            su privacidad.</p>
+
+        <h2>Información que recopilamos</h2>
+        <p>Podemos recopilar la siguiente información:</p>
+        <ul>
+            <li>Dirección de correo electrónico: Podemos recopilar su dirección de correo electrónico cuando nos la
+                proporciona
+                para fines como la creación de cuentas, la suscripción a boletines informativos o la comunicación con
+                nuestro
+                equipo de soporte.
+            </li>
+        </ul>
+
+        <h2>Cómo utilizamos su información</h2>
+        <p>Podemos utilizar la información que recopilamos para los siguientes propósitos:</p>
+        <ul>
+            <li>Registro interno.</li>
+            <li>Enviar correos electrónicos promocionales sobre nuevos productos, ofertas especiales u otra información
+                que
+                creemos que puede resultar interesante para usted, utilizando la dirección de correo electrónico que nos
+                ha
+                proporcionado.
+            </li>
+            <li>Mejorar nuestros productos y servicios.</li>
+            <li>Contactarlo para fines de investigación de mercado. Podemos contactarlo por correo electrónico.</li>
+        </ul>
+
+        <h2>Seguridad</h2>
+        <p>Nos comprometemos a garantizar que su información esté segura. Para evitar el acceso o divulgación no
+            autorizados,
+            hemos implementado procedimientos físicos, electrónicos y administrativos adecuados para salvaguardar y
+            proteger
+            la información que recopilamos en línea.</p>
+
+        <h2>Divulgación a terceros</h2>
+        <p>No vendemos, intercambiamos ni transferimos de ninguna otra manera su información de identificación personal
+            a
+            partes externas a menos que proporcionemos un aviso previo. Esto no incluye terceros de confianza que nos
+            ayuden
+            en la operación de nuestra aplicación, en la realización de nuestro negocio o en el servicio que le
+            brindamos,
+            siempre y cuando esas partes acepten mantener esta información confidencial.</p>
+
+        <h2>Su consentimiento</h2>
+        <p>Al utilizar nuestra aplicación, usted acepta los términos de esta Política de Privacidad.</p>
+
+        <h2>Cambios en nuestra Política de Privacidad</h2>
+        <p>Podemos actualizar esta Política de Privacidad de vez en cuando. Le recomendamos que revise esta página
+            periódicamente
+            para ver cualquier cambio. El uso continuado de la aplicación después de que publiquemos cualquier
+            modificación a
+            la Política de Privacidad en esta página constituirá su aceptación de las modificaciones y su consentimiento
+            para
+            cumplir y estar sujeto a la Política de Privacidad modificada.</p>
+
+        <h2>Contáctenos</h2>
+        <p>Si tiene alguna pregunta o inquietud acerca de esta Política de Privacidad, comuníquese con nosotros a <a
+                href="mailto:info@tepache.dev">info@tepache.dev</a>.</p>
+    {% else %}
+        <h1>Privacy Policy</h1>
+
+        <p>Culto Perro Cafe is committed to ensuring that your privacy is protected. This Privacy Policy explains how we
+            use the
+            information we collect about you and the procedures that we have in place to safeguard your privacy.</p>
+
+        <h2>Information We Collect</h2>
+        <p>We may collect the following information:</p>
+        <ul>
+            <li>Email address: We may collect your email address when you provide it to us for purposes such as account
+                creation, subscription to newsletters, or communication with our support team.
+            </li>
+        </ul>
+
+        <h2>How We Use Your Information</h2>
+        <p>We may use the information we collect for the following purposes:</p>
+        <ul>
+            <li>Internal record keeping.</li>
+            <li>Sending promotional emails about new products, special offers, or other information which we think you
+                may find
+                interesting, using the email address you have provided.
+            </li>
+            <li>Improving our products and services.</li>
+            <li>Contacting you for market research purposes. We may contact you by email.</li>
+        </ul>
+
+        <h2>Security</h2>
+        <p>We are committed to ensuring that your information is secure. In order to prevent unauthorized access or
+            disclosure,
+            we have put in place suitable physical, electronic, and managerial procedures to safeguard and secure the
+            information we collect online.</p>
+
+        <h2>Third-Party Disclosure</h2>
+        <p>We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties
+            unless we
+            provide you with advance notice. This does not include trusted third parties who assist us in operating our
+            app,
+            conducting our business, or servicing you, so long as those parties agree to keep this information
+            confidential.</p>
+
+        <h2>Your Consent</h2>
+        <p>By using our app, you consent to the terms of this Privacy Policy.</p>
+
+        <h2>Changes to Our Privacy Policy</h2>
+        <p>We may update this Privacy Policy from time to time. We encourage you to review this page periodically for
+            any
+            changes. Your continued use of the app after we post any modifications to the Privacy Policy on this page
+            will
+            constitute your acknowledgment of the modifications and your consent to abide and be bound by the modified
+            Privacy
+            Policy.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions or concerns about this Privacy Policy, please contact us at <a
+                href="mailto:info@tepache.dev">info@tepache.dev</a>.</p>
+    {% endif %}
+{% endblock %}

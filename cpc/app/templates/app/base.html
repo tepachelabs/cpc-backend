@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Website{% endblock %}</title>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Raleway:wght@400;700&display=swap">
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif; /* Use Raleway font for body text */
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #F8EEE0; /* Background color for entire content */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #222222; /* Banner background color */
+            padding: 10px 0;
+            text-align: center;
+            font-family: 'Oswald', sans-serif; /* Use Oswald font for header */
+            color: white;
+        }
+
+        header img {
+            max-width: 300px; /* Set max-width to control the size of the image */
+            width: 100%; /* Ensure the image doesn't exceed its container */
+        }
+
+        footer {
+            background-color: #222222; /* Footer background color */
+            color: white; /* Text color for footer */
+            padding: 10px 0;
+            text-align: center;
+            margin-top: auto; /* Push the footer to the bottom */
+            font-family: 'Oswald', sans-serif; /* Use Oswald font for footer */
+            max-height: 400px; /* Set the height of the footer */
+            display: flex;
+            justify-content: space-around; /* Align columns */
+            align-items: flex-start;
+            flex-wrap: wrap; /* Allow content to wrap into multiple lines */
+            line-height: 1.4; /* Adjust line height */
+        }
+
+        footer .column {
+            max-width: 250px; /* Set width for each column */
+            text-align: left; /* Align text to the left */
+            margin: 10px; /* Add some margin between columns */
+        }
+
+        footer .copyright {
+            width: 100%; /* Occupy full width */
+            text-align: center; /* Align text to the center */
+        }
+
+        main {
+            padding: 20px; /* Add some padding to main content */
+            flex-grow: 1; /* Grow to fill remaining space */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!-- Header content goes here -->
+    <img src="https://cdn.shopify.com/oxygen-v2/1295/1917/4079/313603/build/_assets/logo-74MTBGJL.svg" alt="Logo">
+</header>
+
+<main>
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer>
+    <!-- Footer content goes here -->
+    <div class="column">
+        <h2>Direccion:</h2>
+        <p>Culto al Perro Café</p>
+        <p>Calle Quintero Arce #49</p>
+        <p>Hermosillo, Sonora</p>
+    </div>
+    <div class="column">
+        <h2>Horario:</h2>
+        <p>Lunes a sabado</p>
+    </div>
+    <div class="column">
+        <h2>Informacion:</h2>
+        <p>Café indie experimental</p>
+        <p>Con ❤ desde Hermosillo</p>
+    </div>
+    <div class="copyright">
+        <h4>&copy; 2020-<span id="currentYear"></span> Tepache Dev. Todos los derechos reservados.</h4>
+    </div>
+</footer>
+
+<script>
+  document.getElementById("currentYear").innerText = new Date().getFullYear().toString();
+</script>
+</body>
+</html>
