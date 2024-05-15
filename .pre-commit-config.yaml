@@ -8,3 +8,4 @@ repos:
       hooks:
       -   id: autoflake
           args: [--remove-all-unused-imports, --recursive, --in-place]
+          exclude: '__init__.py'
