@@ -23,6 +23,7 @@ celery = {extras = ["redis"], version = "^5.3.6"}
 django-celery-beat = "^2.5.0"
 logtail-python = "^0.2.10"
 pytz = "^2024.1"
+google-api-python-client = "^2.129.0"
 
 
 [tool.poetry.group.dev.dependencies]
