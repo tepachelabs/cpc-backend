@@ -30,6 +30,15 @@ app.conf.beat_schedule = {
         "task": "cpc.shopify_backend.tasks.inventory_reminder",
         "schedule": crontab(hour="13", minute="30"),  # Run at 6:30 AM Phoenix TZ
     },
+    "notify-calendar-events": {
+        "task": "cpc.app.tasks.notify_calendar_events",
+        "schedule": crontab(hour="14", minute="00"),  # Run at 7:00 AM Phoenix TZ
+    },
+    # TODO: Uncomment when the webhook is ready
+    # "register-calendar-webhook": {
+    #     "task": "cpc.webhooks.tasks.register_calendar_webhook",
+    #     "schedule": crontab(hour="7", minute="01"),  # Run at 0:01 AM Phoenix TZ
+    # },
 }
 
 

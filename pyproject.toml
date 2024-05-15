@@ -22,12 +22,14 @@ django-extensions = "^3.2.3"
 celery = {extras = ["redis"], version = "^5.3.6"}
 django-celery-beat = "^2.5.0"
 logtail-python = "^0.2.10"
+pytz = "^2024.1"
 
 
 [tool.poetry.group.dev.dependencies]
 ipdb = "^0.13.13"
 black = "^24.1.1"
 gunicorn = "^21.2.0"
+autoflake = "^2.3.1"
 
 [build-system]
 requires = ["poetry-core"]

@@ -56,6 +56,8 @@ class TelegramService:
             "message_thread_id": message_thread_id,
         }
         response = requests.post(url, data=data)
+        if response.status_code != 200:
+            raise Exception(f"Failed to send message: {response.text}")
         return response.json()
 
     # TODO: Move this out.
