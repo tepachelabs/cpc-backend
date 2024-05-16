@@ -2,7 +2,7 @@ import logging
 
 from celery import shared_task
 
-from cpc.app.models import ProductReminder
+from cpc.app.models import CollectionReminder
 from cpc.app.services.telegram import telegram_service
 from cpc.shopify_backend.services import ShopifyProductCountService
 
@@ -11,7 +11,7 @@ logger = logging.getLogger()
 
 @shared_task
 def inventory_reminder():
-    reminders = ProductReminder.objects.all()
+    reminders = CollectionReminder.objects.all()
     if reminders.count() == 0:
         logger.info("No reminders found.")
         return

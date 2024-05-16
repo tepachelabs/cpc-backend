@@ -38,10 +38,18 @@ class ShopifyClient:
     def active(self) -> bool:
         return self._shopify.Shop.current() is not None
 
+    def find_collection(self, shopify_id: int):
+        try:
+            return self._shopify.CustomCollection.find(shopify_id)
+        except ResourceNotFound as e:
+            logger.warning(f"Collection not found: {e}")
+            return None
+
     def find_product(self, **kwargs):
         try:
-            if kwargs.get("id") is not None:
-                return self._shopify.Product.find(kwargs.get("id"))
+            shopify_id = kwargs.get("shopify_id", None)
+            if shopify_id is not None:
+                return self._shopify.Product.find(shopify_id)
             return self._shopify.Product.find_first(**kwargs)
         except ResourceNotFound as e:
             logger.warning(f"Product not found: {e}")
