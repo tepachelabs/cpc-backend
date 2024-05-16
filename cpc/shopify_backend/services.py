@@ -20,6 +20,9 @@ class ShopifyProductCountService:
                 shopify_id=collection_reminder.shopify_id
             )
             if collection is not None:
+                logger.info(
+                    f"CollectionReminder {collection_reminder.shopify_id} found, getting products."
+                )
                 # TODO: implement collection count (need to find a way to get all products in a collection)
                 message = f"🏷️ *TITLE*:\n"
                 # if len(product.variants) == 1:
