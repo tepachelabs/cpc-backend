@@ -1,1 +1,1 @@
-from .reminders import ProductReminder
+from .reminders import CollectionReminder
