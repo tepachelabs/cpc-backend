@@ -27,7 +27,10 @@ DEBUG = not PRODUCTION
 
 ALLOWED_HOSTS = ["*"]
 if PRODUCTION:
-    CSRF_TRUSTED_ORIGINS = [f"https://{os.getenv('APP_HOSTNAME')}"]
+    APP_HOSTNAME = os.getenv("APP_HOSTNAME")
+    CSRF_TRUSTED_ORIGINS = [
+        f"https://{hostname.strip()}" for hostname in APP_HOSTNAME.split(",")
+    ]
 else:
     CSRF_TRUSTED_ORIGINS = ["http://*", "https://*"]
 
