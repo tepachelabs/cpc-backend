@@ -9,7 +9,11 @@ class TestLedgerSubmission(unittest.TestCase):
         from cpc.webhooks.services.gform.submissions import LedgerSubmission
 
         self.telegram_service = MagicMock()
-        self.submission = LedgerSubmission(self.telegram_service)
+        self.telegram_message_parser = MagicMock()
+        self.telegram_message_parser.call.side_effect = lambda x: x
+        self.submission = LedgerSubmission(
+            self.telegram_service, self.telegram_message_parser
+        )
 
     def test_process(self):
         data = {
@@ -35,7 +39,11 @@ class TestFeedbackSubmission(unittest.TestCase):
         from cpc.webhooks.services.gform.submissions import FeedbackSubmission
 
         self.telegram_service = MagicMock()
-        self.submission = FeedbackSubmission(self.telegram_service)
+        self.telegram_message_parser = MagicMock()
+        self.telegram_message_parser.call.side_effect = lambda x: x
+        self.submission = FeedbackSubmission(
+            self.telegram_service, self.telegram_message_parser
+        )
         settings.TELEGRAM_MENTIONS = ["test_user"]
 
     def test_process(self):
