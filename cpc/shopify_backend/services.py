@@ -27,7 +27,7 @@ class ShopifyProductCountService:
                     continue
                 products = collection.products()
                 for product in products:
-                    message = f"🏷️ *{product.title}*:\n"
+                    message = f"🏷️ *{telegram_service.parse_text(product.title)}*:\n"
                     if len(product.variants) == 1:
                         quantity = product.variants[0].inventory_quantity
                         message += f"> {self.telegram_service.parse_text(str(quantity))} \\-\\-\\-\\> {product.title}\n"
