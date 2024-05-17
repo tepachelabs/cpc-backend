@@ -6,12 +6,16 @@ from django.views.decorators.csrf import csrf_exempt
 from telegram import Update, Bot
 from telegram.ext import Updater
 
-bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
-dispatcher = Updater(bot, update_queue=None)
 
-
+# TODO: ? Move this out.
 @csrf_exempt
 def telegram_webhook(request):
+    if settings.TELEGRAM_BOT_TOKEN is None:
+        return JsonResponse({"error": "Bot not available."})
+
+    bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
+    dispatcher = Updater(bot, update_queue=None)
+
     if request.method == "POST":
         json_string = request.body.decode("UTF-8")
         update = Update.de_json(json.loads(json_string), bot)
