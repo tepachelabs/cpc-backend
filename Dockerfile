@@ -12,6 +12,9 @@ ENV DOPPLER_PROJECT=$DOPPLER_PROJECT
 ARG DOPPLER_ENVIRONMENT
 ENV DOPPLER_ENVIRONMENT=$DOPPLER_ENVIRONMENT
 
+ARG GIT_HASH
+ENV GIT_HASH=$GIT_HASH
+
 # Update and install dependencies
 # Add Doppler's RSA key
 RUN wget -q -t3 'https://packages.doppler.com/public/cli/rsa.8004D9FF50437357.key' -O /etc/apk/keys/cli@doppler-8004D9FF50437357.rsa.pub

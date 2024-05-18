@@ -29,6 +29,9 @@ jobs:
       - name: Preset Image Name
         run: echo "IMAGE_URL=$(echo ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}:$(echo ${{ github.sha }} | cut -c1-7) | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
 
+      - name: Get git hash
+        run: echo "GIT_HASH=$(git rev-parse HEAD)" >> $GITHUB_ENV
+
       - name: Build and push Docker Image
         uses: docker/build-push-action@v4
         with:
@@ -37,6 +40,7 @@ jobs:
           push: true
           tags: ${{ env.IMAGE_URL }}
           build-args: |
+            GIT_HASH=${{ env.GIT_HASH }}
             DOPPLER_TOKEN=${{ secrets.DOPPLER_TOKEN }}
 
       # Deploy to CapRover

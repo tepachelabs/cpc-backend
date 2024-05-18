@@ -13,6 +13,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "cpc.app.context_processors.git_version",
             ],
         },
     },

@@ -43,3 +43,9 @@ TIME_ZONE = "UTC"
 
 USE_I18N = True
 USE_TZ = True
+
+print("ENVIRONMENT:", ENVIRONMENT)
+if ENVIRONMENT == "dev" or ENVIRONMENT == "development" or ENVIRONMENT is None:
+    GIT_HASH = "development"
+else:
+    GIT_HASH = os.getenv("GIT_HASH", "N/A")
