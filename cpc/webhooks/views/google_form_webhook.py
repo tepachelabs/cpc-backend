@@ -4,7 +4,7 @@ from django.conf import settings
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from cpc.app.services.telegram import TelegramService
+from cpc.app.services.telegram import TelegramService, TelegramMessageParser
 from cpc.webhooks.errors import WebhookException
 from cpc.webhooks.serializers.google_form_input_serializer import (
     GoogleFormInputSerializer,
@@ -36,7 +36,9 @@ class GoogleFormWebhookView(APIView):
             raise WebhookException("Invalid submission type")
 
         logger.info(f"Processing {data_type} submission")
-        submission = submission_type(TelegramService(settings.TELEGRAM_BOT_TOKEN))
+        submission = submission_type(
+            TelegramService(settings.TELEGRAM_BOT_TOKEN), TelegramMessageParser()
+        )
         submission.process(serializer.validated_data.get("data"))
 
         return Response(status=200)
