@@ -10,18 +10,24 @@ logger = logging.getLogger(__name__)
 
 
 class CalendarChatMessageService:
+    calendar_service = GoogleCalendarService()
+
     def __init__(self, telegram_message_parser=None):
         super().__init__()
         self.telegram_message_parser = telegram_message_parser
 
-    def notify_today_events(self):
+    def notify_today_events(self, use_cache=False):
         logger.info("Notifying calendar events.")
 
         # Get the Hermosillo timezone
         hermosillo = pytz.timezone("America/Hermosillo")
         now = datetime.now(hermosillo)
         today = now.date()
-        events: list[dict] = GoogleCalendarService().get_calendar_events(today)
+        events: list[dict]
+        if use_cache:
+            events = self.calendar_service.get_events_from_cache(today)
+        else:
+            events: list[dict] = self.calendar_service.fetch_events(today)
         if not events:
             logger.info("No events found.")
             return

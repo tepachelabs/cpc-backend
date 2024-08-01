@@ -34,4 +34,4 @@ class EventosCommand(BaseCommand):
         calendar_message_service = CalendarChatMessageService(
             telegram_message_parser=TelegramMessageParser()
         )
-        calendar_message_service.notify_today_events()
+        calendar_message_service.notify_today_events(False)
