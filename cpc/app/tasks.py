@@ -1,38 +1,21 @@
 import logging
-from datetime import datetime
+from ssl import SSLEOFError
 
-import pytz
 from celery import shared_task
 
-from cpc.app.services.telegram import telegram_service, TelegramMessageParser
-from cpc.app.services import GoogleCalendarService
+from cpc.app.services.chat_messages import CalendarChatMessageService
+from cpc.app.services.telegram import TelegramMessageParser
 
 logger = logging.getLogger()
 
+ERRORS_TO_RETRY = (SSLEOFError,)
 
-@shared_task
+
+@shared_task(
+    autoretry_for=ERRORS_TO_RETRY, retry_kwargs={"max_retries": 5, "countdown": 60}
+)
 def notify_calendar_events():
-    logger.info("Notifying calendar events.")
-    telegram_message_parser = TelegramMessageParser()
-
-    # Get the Hermosillo timezone
-    hermosillo = pytz.timezone("America/Hermosillo")
-    now = datetime.now(hermosillo)
-    today = now.date()
-    events: list[dict] = GoogleCalendarService().get_calendar_events(today)
-    if not events:
-        logger.info("No events found.")
-        return
-    message = "📅 *Eventos de Hoy* 📅\n\n"
-    for event in events:
-        start = datetime.fromisoformat(
-            event.get("start", {}).get("dateTime", "")
-        ).strftime("%I:%M %p")
-        end = datetime.fromisoformat(event.get("end", {}).get("dateTime", "")).strftime(
-            "%I:%M %p"
-        )
-        summary = event.get("summary", "")
-        message += (
-            f"> 🕒 *{start} \\- {end}* \\- {telegram_message_parser.call(summary)}\n"
-        )
-    telegram_service.send_message(message)
+    calendar_message_service = CalendarChatMessageService(
+        telegram_message_parser=TelegramMessageParser()
+    )
+    calendar_message_service.notify_today_events()
