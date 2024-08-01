@@ -34,14 +34,34 @@ docker-compose up postgres redis -d
 poetry install --with dev
 ```
 
-## How to run locally (requires env vars)
+# Recommendations when working with this repository
+
+1. Run with doppler (many environment variables are required)
+2. Run locally
+3. Run infra with docker-compose
+4. Test manually with your own telegram bot
+
+## How to run the django app locally
 ```shell
 poetry run python manage.py runserver
 ```
 
-## How to run locally with doppler
+## How to run the django app locally with doppler
 ```shell
 doppler run -- poetry run python manage.py runserver
+```
+
+## How to run the celery worker
+```shell
+# for some reason on macOS: 
+#   you need to run this command with the --pool=solo
+# on production it runs without it
+doppler run -- poetry run celery -A cpc worker --loglevel=info --pool=solo
+````
+
+## How to run the telegram bot?
+```shell
+doppler run -- poetry run python manage.py run_telegram_bot
 ```
 
 ## With Docker Compose
