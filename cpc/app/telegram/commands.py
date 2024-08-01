@@ -23,7 +23,6 @@ class InventarioCommand(BaseCommand):
 
     async def handler(self, _update: Update, _context: CallbackContext):
         # Keep it as a celery task as the cron job is already set up
-        print("Hehehehehehe")
         self.task_executor.send_task("cpc.shopify_backend.tasks.inventory_reminder")
 
 
