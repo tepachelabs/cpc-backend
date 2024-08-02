@@ -1,9 +1,4 @@
-import asyncio
-
 from django.apps import AppConfig
-from django.conf import settings
-
-from cpc.app.services.telegram import TelegramService
 
 
 class CpcAppConfig(AppConfig):

@@ -21,6 +21,9 @@ app.config_from_object("django.conf:settings", namespace="CELERY")
 # Load task modules from all registered Django app configs.
 app.autodiscover_tasks()
 
+# =============================================================================
+# Scheduled tasks
+# =============================================================================
 app.conf.beat_schedule = {
     "close-reminder": {
         "task": "cpc.shopify_backend.tasks.inventory_reminder",
@@ -34,16 +37,11 @@ app.conf.beat_schedule = {
         "task": "cpc.app.tasks.notify_calendar_events",
         "schedule": crontab(hour="14", minute="00"),  # Run at 7:00 AM Phoenix TZ
     },
-    # TODO: Uncomment when the webhook is ready
-    # "register-calendar-webhook": {
-    #     "task": "cpc.webhooks.tasks.register_calendar_webhook",
-    #     "schedule": crontab(hour="7", minute="01"),  # Run at 0:01 AM Phoenix TZ
-    # },
 }
 
 
 @after_setup_logger.connect
-def setup_loggers(logger, *args, **kwargs):
+def setup_loggers(logger):
     if LOGTAIL_SOURCE_TOKEN:
         handler = logtail.LogtailHandler(source_token=LOGTAIL_SOURCE_TOKEN)
         logger.addHandler(handler)
