@@ -1,7 +1,8 @@
 [tool.poetry]
 name = "cpc-webhooks"
-version = "1.1.0"
+version = "1.2.1"
 description = ""
+package-mode = false
 authors = [
     "Jose Salcido <jmsalcidoaguilar@gmail.com>",
 ]
@@ -21,9 +22,9 @@ dj-database-url = "^2.1.0"
 django-extensions = "^3.2.3"
 celery = {extras = ["redis"], version = "^5.3.6"}
 django-celery-beat = "^2.5.0"
-logtail-python = "^0.2.10"
 pytz = "^2024.1"
 google-api-python-client = "^2.129.0"
+logtail-python = "^0.3.0"
 
 
 [tool.poetry.group.dev.dependencies]
@@ -31,6 +32,7 @@ ipdb = "^0.13.13"
 black = "^24.1.1"
 gunicorn = "^21.2.0"
 autoflake = "^2.3.1"
+pylint = "^3.2.6"
 
 [build-system]
 requires = ["poetry-core"]
