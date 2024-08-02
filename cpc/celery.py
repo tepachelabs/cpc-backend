@@ -41,7 +41,8 @@ app.conf.beat_schedule = {
 
 
 @after_setup_logger.connect
-def setup_loggers(logger):
+# pylint: disable=unused-argument
+def setup_loggers(logger, *args, **kwargs):
     if LOGTAIL_SOURCE_TOKEN:
         handler = logtail.LogtailHandler(source_token=LOGTAIL_SOURCE_TOKEN)
         logger.addHandler(handler)
