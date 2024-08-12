@@ -5,6 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from cpc.app.services.telegram import TelegramService, TelegramMessageParser
+from cpc.network.decorators import log_raw_json
 from cpc.webhooks.errors import WebhookException
 from cpc.webhooks.serializers.google_form_input_serializer import (
     GoogleFormInputSerializer,
@@ -21,6 +22,7 @@ class GoogleFormWebhookView(APIView):
         "ledger": LedgerSubmission,
     }
 
+    @log_raw_json
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
         token = request.query_params.get("token")
