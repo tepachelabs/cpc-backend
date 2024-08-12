@@ -27,8 +27,8 @@ class FeedbackSubmission(GoogleFormSubmission):
 
     def __init__(
         self,
-        telegram_service: TelegramService,
-        telegram_message_parser: TelegramMessageParser,
+        telegram_service: TelegramService = None,
+        telegram_message_parser: TelegramMessageParser = None,
     ) -> None:
         super().__init__()
         self.telegram_service = telegram_service
@@ -38,8 +38,10 @@ class FeedbackSubmission(GoogleFormSubmission):
         responses = data.get("responses", None)
         if responses is None:
             raise WebhookException("Invalid responses")
-
+        email = data.get("email", None)
         text = f"📝 *Completado: Valoramos tu opinión para mejorar* ✨\n\n"
+        if email is not None:
+            text += f"*Email:*\n{self.telegram_message_parser.call(email)}\n\n"
         for question, answer in responses.items():
             if isinstance(answer, list):
                 answer = ", ".join(answer)
@@ -77,8 +79,8 @@ class LedgerSubmission(GoogleFormSubmission):
 
     def __init__(
         self,
-        telegram_service: TelegramService,
-        telegram_message_parser: TelegramMessageParser,
+        telegram_service: TelegramService = None,
+        telegram_message_parser: TelegramMessageParser = None,
     ) -> None:
         super().__init__()
         self.telegram_service = telegram_service

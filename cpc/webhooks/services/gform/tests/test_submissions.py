@@ -68,3 +68,19 @@ class TestFeedbackSubmission(unittest.TestCase):
             "*This is yet another question:*\nThis is yet another answer, Copy that\n\n"
             "*CC:*\n[@test_user](tg://user?id=test_user)"
         )
+
+    def test_process__with_email(self):
+        data = {
+            "email": "foo@test.email",
+            "responses": {
+                "What did you like about our service?": "I liked the fast response times.",
+            },
+        }
+        self.telegram_service.parse_text.side_effect = lambda x: x
+        self.submission.process(data)
+        self.telegram_service.send_message.assert_called_once_with(
+            "📝 *Completado: Valoramos tu opinión para mejorar* ✨\n\n"
+            "*Email:*\nfoo@test.email\n\n"
+            "*What did you like about our service?:*\nI liked the fast response times.\n\n"
+            "*CC:*\n[@test_user](tg://user?id=test_user)"
+        )
