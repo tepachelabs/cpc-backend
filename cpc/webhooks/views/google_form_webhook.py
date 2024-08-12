@@ -22,6 +22,9 @@ class GoogleFormWebhookView(APIView):
         "ledger": LedgerSubmission,
     }
 
+    telegram_service = TelegramService(settings.TELEGRAM_BOT_TOKEN)
+    telegram_message_parser = TelegramMessageParser()
+
     @log_raw_json
     def post(self, request):
         serializer = self.serializer_class(data=request.data)
@@ -33,14 +36,20 @@ class GoogleFormWebhookView(APIView):
             raise WebhookException("Invalid data", status_code=400)
 
         data_type = serializer.validated_data.get("type")
-        submission_type = self.submissions.get(data_type, None)
-        if submission_type is None:
+        submission_type_class = self.submissions.get(data_type, None)
+        if submission_type_class is None:
             raise WebhookException("Invalid submission type")
 
         logger.info(f"Processing {data_type} submission")
-        submission = submission_type(
-            TelegramService(settings.TELEGRAM_BOT_TOKEN), TelegramMessageParser()
-        )
+
+        try:
+            submission = submission_type_class()
+            setattr(submission, "telegram_service", self.telegram_service)
+            setattr(submission, "telegram_message_parser", self.telegram_message_parser)
+        except Exception as e:
+            logger.exception(e)
+            raise WebhookException("Error processing submission")
+
         submission.process(serializer.validated_data.get("data"))
 
         return Response(status=200)
