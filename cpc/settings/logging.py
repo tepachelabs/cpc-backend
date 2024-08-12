@@ -1,6 +1,6 @@
 import os
 
-from ._base import ENVIRONMENT
+from ._base import PRODUCTION
 
 LOGTAIL_SOURCE_TOKEN = os.getenv("LOGTAIL_SOURCE_TOKEN", None)
 
@@ -28,9 +28,10 @@ LOGGING = {
                 "console",
             ],
             "level": "INFO",
+            "propagate": False,
         },
     },
 }
 
-# if PRODUCTION and LOGTAIL_SOURCE_TOKEN is not None:
-LOGGING["root"]["handlers"].append("logtail")
+if PRODUCTION and LOGTAIL_SOURCE_TOKEN is not None:
+    LOGGING["root"]["handlers"].append("logtail")
