@@ -25,12 +25,13 @@ class TelegramBot:
                     for command in TelegramBot.BOT_COMMANDS
                 ]
             )
+            logger.info("Bot post init completed")
         else:
-            logger.error("Bot is not initialized in the application.")
+            logger.error("Bot is not initialized in the application")
 
     def start(self):
         if settings.TELEGRAM_BOT_TOKEN is None:
-            logger.error("TELEGRAM_BOT_TOKEN is not set in the environment variables.")
+            logger.error("TELEGRAM_BOT_TOKEN is not set in the environment variables")
             return
 
         application = (
