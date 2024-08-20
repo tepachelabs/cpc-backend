@@ -30,13 +30,10 @@ class ProductsView(APIView):
                 collection_id=self.collections[collection]
             )
 
-        print("products view [GET]")
-
         return JsonResponse({
             collection: [p.to_dict() for p in products[collection]]
             for collection in self.collections
         })
 
     def post(self, request):
-        print("orders view [POST]")
         return render(request, "app/index.html")
