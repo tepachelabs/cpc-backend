@@ -40,3 +40,11 @@ class ShopifyClient:
         except ResourceNotFound as e:
             logger.warning(f"Product not found: {e}")
             return None
+
+    def retrieve_collection_products(self, collection_id: int):
+        try:
+            collection = self.find_collection(collection_id)
+            return collection.products()
+        except ResourceNotFound as e:
+            logger.warning(f"Collection not found: {e}")
+            return []
