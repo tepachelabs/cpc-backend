@@ -20,20 +20,20 @@ class ProductsView(APIView):
         "merch": 479838241061,
     }
 
-    def get(self, request):
+    def get(self, request, id=0):
         shopify_client = ShopifyClient()
 
-        products = {}
+        if id != 0:
+            return JsonResponse(shopify_client.find_product(shopify_id=id).to_dict())
+        else:
+            products = {}
 
-        for collection in self.collections:
-            products[collection] = shopify_client.retrieve_collection_products(
-                collection_id=self.collections[collection]
-            )
+            for collection in self.collections:
+                products[collection] = shopify_client.retrieve_collection_products(
+                    collection_id=self.collections[collection]
+                )
 
-        return JsonResponse({
-            collection: [p.to_dict() for p in products[collection]]
-            for collection in self.collections
-        })
-
-    def post(self, request):
-        return render(request, "app/index.html")
+            return JsonResponse({
+                collection: [p.to_dict() for p in products[collection]]
+                for collection in self.collections
+            })

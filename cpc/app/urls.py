@@ -7,4 +7,5 @@ urlpatterns = [
 
     # API
     path("api/products", views.ProductsView.as_view()),
+    path("api/products/<str:id>", views.ProductsView.as_view()),
 ]
