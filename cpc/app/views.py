@@ -15,7 +15,7 @@ def privacy_view(request):
 
 class ProductsView(APIView):
     collections = {
-        "ground_coffee": 479837782309,
+        "coffee": 479837782309,
         "misc": 479838044453,
         "merch": 479838241061,
     }
