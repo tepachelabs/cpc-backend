@@ -26,14 +26,15 @@ class ProductsView(APIView):
         if id != 0:
             return JsonResponse(shopify_client.find_product(shopify_id=id).to_dict())
         else:
-            products = {}
+            all_products = []
 
             for collection in self.collections:
-                products[collection] = shopify_client.retrieve_collection_products(
+                products = shopify_client.retrieve_collection_products(
                     collection_id=self.collections[collection]
                 )
+                for product in products:
+                    product_dict = product.to_dict()
+                    product_dict['collection'] = collection
+                    all_products.append(product_dict)
 
-            return JsonResponse({
-                collection: [p.to_dict() for p in products[collection]]
-                for collection in self.collections
-            })
+            return JsonResponse(all_products, safe=False)
