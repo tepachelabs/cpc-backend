@@ -8,6 +8,11 @@ from cpc.shopify_backend.client import ShopifyClient
 logger = logging.getLogger()
 
 
+class OrderCreateWebhookService:
+    def process(self, data: dict):
+        pass
+
+
 class ShopifyProductCountService:
     shopify_client = ShopifyClient()
     telegram_service = telegram_service
