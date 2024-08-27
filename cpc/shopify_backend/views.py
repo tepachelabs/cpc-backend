@@ -1,3 +1,4 @@
+import logging
 import base64
 import hashlib
 import hmac
@@ -9,6 +10,8 @@ from rest_framework.response import Response
 from cpc.shopify_backend.errors import ShopifyWebhookException
 from cpc.shopify_backend.services import OrderCreateWebhookService
 from django.conf import settings
+
+logger = logging.getLogger(__name__)
 
 
 class APIWebhookView(APIView):
@@ -42,8 +45,13 @@ class AdminWebhookView(APIWebhookView):
         try:
             service.process(data)
         except ShopifyWebhookException as e:
+            logger.error(
+                f"Error processing webhook: {str(e)}",
+                exc_info=True,
+                extra={"data": data},
+            )
             return Response({"message": str(e)}, status=500)
-        return Response({"message": "Order created", "data": data})
+        return Response({"message": f"Webhook '{topic}' processed", "data": data})
 
     @staticmethod
     def _get_service(topic):
