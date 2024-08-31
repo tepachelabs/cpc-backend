@@ -36,8 +36,11 @@ class NewOrderChatMessageService:
                 ]
             ]
         }
-
-        self.telegram_service.send_message(message, reply_markup=reply_markup)
+        self.telegram_service.send_message(
+            message,
+            message_thread_id=settings.TELEGRAM_ORDERS_MESSAGE_THREAD_ID,
+            reply_markup=reply_markup,
+        )
 
 
 class CalendarChatMessageService:
