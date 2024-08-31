@@ -1,3 +1,4 @@
+import json
 from typing import Union, Optional
 
 import requests
@@ -55,6 +56,7 @@ class TelegramService:
         message: str,
         chat_id: Union[int, str] = settings.TELEGRAM_CHAT_ID,
         message_thread_id: Optional[int] = None,
+        reply_markup: Optional[dict] = None,
         parse_mode="MarkdownV2",
     ):
         url = f"https://api.telegram.org/bot{self._bot_token}/sendMessage"
@@ -64,6 +66,8 @@ class TelegramService:
             "parse_mode": parse_mode,
             "message_thread_id": message_thread_id,
         }
+        if reply_markup:
+            data["reply_markup"] = json.dumps(reply_markup)
         response = requests.post(url, data=data)
         if response.status_code != 200:
             raise Exception(f"Failed to send message: {response.text}")

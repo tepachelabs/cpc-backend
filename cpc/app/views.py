@@ -1,7 +1,6 @@
 from django.http import JsonResponse
 from django.shortcuts import render
 from rest_framework.views import APIView
-from rest_framework.response import Response
 from cpc.shopify_backend.client import ShopifyClient
 
 
@@ -34,7 +33,7 @@ class ProductsView(APIView):
                 )
                 for product in products:
                     product_dict = product.to_dict()
-                    product_dict['collection'] = collection
+                    product_dict["collection"] = collection
                     all_products.append(product_dict)
 
             return JsonResponse(all_products, safe=False)

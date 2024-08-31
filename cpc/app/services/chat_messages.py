@@ -2,15 +2,50 @@ import logging
 from datetime import datetime
 
 import pytz
+from django.conf import settings
 
 from cpc.app.services import GoogleCalendarService
-from cpc.app.services.telegram import telegram_service
+from cpc.app.services.telegram import telegram_service, TelegramMessageParser
+from cpc.shopify_backend.data import OrderCreateData
 
 logger = logging.getLogger(__name__)
 
 
+class NewOrderChatMessageService:
+    telegram_service = telegram_service
+    telegram_message_parser = TelegramMessageParser()
+
+    def send_message(self, order_data: OrderCreateData):
+        message = f"📦 *Nueva Orden Web Recibida*: {self.telegram_message_parser.call(order_data.order_number)}\n\n"
+        message += f"💰 *Total*: ${self.telegram_message_parser.call(order_data.total_price)}\n"
+        message += f"🔖 *Etiquetar para*: {self.telegram_message_parser.call(order_data.customer_name)}\n"
+        message += "\n"
+
+        if order_data.is_local_pickup:
+            message += f"✨ *Iran por él 🏠🚶🏼‍♂️*\n"
+        else:
+            message += f"✨ *Lo Enviamos 🚚📦*\n"
+
+        reply_markup = {
+            "inline_keyboard": [
+                [
+                    {
+                        "text": "📦 Shopify Admin",
+                        "url": f"{settings.SHOPIFY_ADMIN_URL}/orders/{order_data.order_id}",
+                    }
+                ]
+            ]
+        }
+        self.telegram_service.send_message(
+            message,
+            message_thread_id=settings.TELEGRAM_ORDERS_MESSAGE_THREAD_ID,
+            reply_markup=reply_markup,
+        )
+
+
 class CalendarChatMessageService:
     calendar_service = GoogleCalendarService()
+    telegram_service = telegram_service
 
     def __init__(self, telegram_message_parser=None):
         super().__init__()
@@ -41,4 +76,4 @@ class CalendarChatMessageService:
             ).strftime("%I:%M %p")
             summary = event.get("summary", "")
             message += f"> 🕒 *{start} \\- {end}* \\- {self.telegram_message_parser.call(summary)}\n"
-        telegram_service.send_message(message)
+        self.telegram_service.send_message(message)
