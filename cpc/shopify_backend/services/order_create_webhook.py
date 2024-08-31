@@ -1,7 +1,7 @@
 import logging
 from typing import Optional
 
-from cpc.app.services.telegram import telegram_service
+from cpc.app.services.chat_messages import NewOrderChatMessageService
 from cpc.shopify_backend.data import OrderCreateData, OrderCreateLineItemData
 from cpc.shopify_backend.errors import ShopifyWebhookException
 
@@ -81,19 +81,12 @@ class OrderCreateDataService:
 
 class OrderCreateWebhookService:
     data_service = OrderCreateDataService()
-    telegram_service = telegram_service
+    new_order_chat_message_service = NewOrderChatMessageService()
 
     def process(self, data: dict):
         order_data: Optional[OrderCreateData] = self.data_service.parse(data)
         if order_data is None:
             return
 
-        # TODO: Implement message and test this.
-        message = f"📦 **Nueva Orden Recibida**: {order_data.order_number}\n\n"
-        message += f"**Total**: ${order_data.total_price}\n"
-
-        # TODO: Make these come from settings
-        self.telegram_service.send_message(
-            message, chat_id=1234567890, message_thread_id=1234567890
-        )
+        self.new_order_chat_message_service.send_message(order_data)
         return order_data
