@@ -4,7 +4,7 @@ version = "1.3.0"
 description = "Culto al Perro Cafe Backend Tools"
 package-mode = false
 authors = [
-    "Jose Salcido <jmsalcidoaguilar@gmail.com>",
+    "Jose Salcido <jose@perro.cafe>",
 ]
 readme = "README.md"
 
