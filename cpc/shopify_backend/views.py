@@ -20,7 +20,7 @@ class APIWebhookView(APIView):
     shopify_webhook_secret = settings.SHOPIFY_WEBHOOK_SECRET
 
     def verify_webhook(self, request):
-        if settings.DEBUG and settings.PROD:
+        if settings.DEBUG:
             return True
         hmac_header = request.headers.get(self.header_hmac)
         if not hmac_header:

@@ -1,0 +1,425 @@
+{
+  "id": 5789651107921,
+  "admin_graphql_api_id": "gid:\/\/shopify\/Order\/5789651107921",
+  "app_id": 580111,
+  "browser_ip": "2806:101e:9:5a5f:e435:5799:c9f2:873",
+  "buyer_accepts_marketing": false,
+  "cancel_reason": null,
+  "cancelled_at": null,
+  "cart_token": "Z2NwLXVzLWNlbnRyYWwxOjAxSkJOQ005NUpFUzVRQlNIVk1WMzJGVjhE",
+  "checkout_id": 24772581785681,
+  "checkout_token": "9fa362a74b61b74f5986f3a79e625ef4",
+  "client_details": {
+    "accept_language": "en-MX",
+    "browser_height": null,
+    "browser_ip": "2806:101e:9:5a5f:e435:5799:c9f2:873",
+    "browser_width": null,
+    "session_hash": null,
+    "user_agent": "Mozilla\/5.0 (Macintosh; Intel Mac OS X 10.15; rv:131.0) Gecko\/20100101 Firefox\/131.0"
+  },
+  "closed_at": null,
+  "company": null,
+  "confirmation_number": "FM0X84IYH",
+  "confirmed": true,
+  "contact_email": "asd@oo.com",
+  "created_at": "2024-11-01T19:53:40-07:00",
+  "currency": "MXN",
+  "current_shipping_price_set": {
+    "shop_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    }
+  },
+  "current_subtotal_price": "400.00",
+  "current_subtotal_price_set": {
+    "shop_money": {
+      "amount": "400.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "400.00",
+      "currency_code": "MXN"
+    }
+  },
+  "current_total_additional_fees_set": null,
+  "current_total_discounts": "0.00",
+  "current_total_discounts_set": {
+    "shop_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    }
+  },
+  "current_total_duties_set": null,
+  "current_total_price": "464.00",
+  "current_total_price_set": {
+    "shop_money": {
+      "amount": "464.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "464.00",
+      "currency_code": "MXN"
+    }
+  },
+  "current_total_tax": "64.00",
+  "current_total_tax_set": {
+    "shop_money": {
+      "amount": "64.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "64.00",
+      "currency_code": "MXN"
+    }
+  },
+  "customer_locale": "en-MX",
+  "device_id": null,
+  "discount_codes": [],
+  "duties_included": false,
+  "email": "asd@oo.com",
+  "estimated_taxes": false,
+  "financial_status": "paid",
+  "fulfillment_status": null,
+  "landing_site": "\/password",
+  "landing_site_ref": null,
+  "location_id": null,
+  "merchant_business_entity_id": "MTU4OTEzODE2NjU3",
+  "merchant_of_record_app_id": null,
+  "name": "#1013",
+  "note": null,
+  "note_attributes": [],
+  "number": 13,
+  "order_number": 1013,
+  "order_status_url": "https:\/\/cpc-backend-test.myshopify.com\/58913816657\/orders\/c467c7e6e005c2e1a9dd64777b1d1246\/authenticate?key=393cdba40ebcdf1fa04d93d33b26a572",
+  "original_total_additional_fees_set": null,
+  "original_total_duties_set": null,
+  "payment_gateway_names": [
+    "bogus"
+  ],
+  "phone": null,
+  "po_number": null,
+  "presentment_currency": "MXN",
+  "processed_at": "2024-11-01T19:53:37-07:00",
+  "reference": "d3f734592c925349c6cd37cca9922ddf",
+  "referring_site": "",
+  "source_identifier": "d3f734592c925349c6cd37cca9922ddf",
+  "source_name": "web",
+  "source_url": null,
+  "subtotal_price": "400.00",
+  "subtotal_price_set": {
+    "shop_money": {
+      "amount": "400.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "400.00",
+      "currency_code": "MXN"
+    }
+  },
+  "tags": "",
+  "tax_exempt": false,
+  "tax_lines": [
+    {
+      "price": "64.00",
+      "rate": 0.16,
+      "title": "VAT",
+      "price_set": {
+        "shop_money": {
+          "amount": "64.00",
+          "currency_code": "MXN"
+        },
+        "presentment_money": {
+          "amount": "64.00",
+          "currency_code": "MXN"
+        }
+      },
+      "channel_liable": false
+    }
+  ],
+  "taxes_included": false,
+  "test": true,
+  "token": "c467c7e6e005c2e1a9dd64777b1d1246",
+  "total_cash_rounding_payment_adjustment_set": {
+    "shop_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    }
+  },
+  "total_cash_rounding_refund_adjustment_set": {
+    "shop_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    }
+  },
+  "total_discounts": "0.00",
+  "total_discounts_set": {
+    "shop_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    }
+  },
+  "total_line_items_price": "400.00",
+  "total_line_items_price_set": {
+    "shop_money": {
+      "amount": "400.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "400.00",
+      "currency_code": "MXN"
+    }
+  },
+  "total_outstanding": "0.00",
+  "total_price": "464.00",
+  "total_price_set": {
+    "shop_money": {
+      "amount": "464.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "464.00",
+      "currency_code": "MXN"
+    }
+  },
+  "total_shipping_price_set": {
+    "shop_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "0.00",
+      "currency_code": "MXN"
+    }
+  },
+  "total_tax": "64.00",
+  "total_tax_set": {
+    "shop_money": {
+      "amount": "64.00",
+      "currency_code": "MXN"
+    },
+    "presentment_money": {
+      "amount": "64.00",
+      "currency_code": "MXN"
+    }
+  },
+  "total_tip_received": "0.00",
+  "total_weight": 0,
+  "updated_at": "2024-11-01T19:53:41-07:00",
+  "user_id": null,
+  "billing_address": {
+    "first_name": null,
+    "address1": "Real de Provincias 9",
+    "phone": null,
+    "city": "Hermosillo",
+    "zip": "83243",
+    "province": "Sonora",
+    "country": "Mexico",
+    "last_name": "Maguey",
+    "address2": null,
+    "company": null,
+    "latitude": 29.0790095,
+    "longitude": -111.0418273,
+    "name": "Maguey",
+    "country_code": "MX",
+    "province_code": "SON"
+  },
+  "customer": {
+    "id": 7038840307793,
+    "email": "asd@oo.com",
+    "created_at": "2024-11-01T19:53:37-07:00",
+    "updated_at": "2024-11-01T19:53:41-07:00",
+    "first_name": null,
+    "last_name": "Maguey",
+    "state": "disabled",
+    "note": null,
+    "verified_email": true,
+    "multipass_identifier": null,
+    "tax_exempt": false,
+    "phone": null,
+    "email_marketing_consent": {
+      "state": "not_subscribed",
+      "opt_in_level": "single_opt_in",
+      "consent_updated_at": null
+    },
+    "sms_marketing_consent": null,
+    "tags": "",
+    "currency": "MXN",
+    "tax_exemptions": [],
+    "admin_graphql_api_id": "gid:\/\/shopify\/Customer\/7038840307793",
+    "default_address": {
+      "id": 8342790209617,
+      "customer_id": 7038840307793,
+      "first_name": null,
+      "last_name": "Maguey",
+      "company": null,
+      "address1": "Real de Provincias 9",
+      "address2": null,
+      "city": "Hermosillo",
+      "province": "Sonora",
+      "country": "Mexico",
+      "zip": "83243",
+      "phone": null,
+      "name": "Maguey",
+      "province_code": "SON",
+      "country_code": "MX",
+      "country_name": "Mexico",
+      "default": true
+    }
+  },
+  "discount_applications": [],
+  "fulfillments": [],
+  "line_items": [
+    {
+      "id": 12950018981969,
+      "admin_graphql_api_id": "gid:\/\/shopify\/LineItem\/12950018981969",
+      "attributed_staffs": [],
+      "current_quantity": 4,
+      "fulfillable_quantity": 4,
+      "fulfillment_service": "manual",
+      "fulfillment_status": null,
+      "gift_card": false,
+      "grams": 0,
+      "name": "Quantity Product - Foo \/ a",
+      "price": "100.00",
+      "price_set": {
+        "shop_money": {
+          "amount": "100.00",
+          "currency_code": "MXN"
+        },
+        "presentment_money": {
+          "amount": "100.00",
+          "currency_code": "MXN"
+        }
+      },
+      "product_exists": true,
+      "product_id": 7219532529745,
+      "properties": [],
+      "quantity": 4,
+      "requires_shipping": true,
+      "sku": "",
+      "taxable": true,
+      "title": "Quantity Product",
+      "total_discount": "0.00",
+      "total_discount_set": {
+        "shop_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        },
+        "presentment_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        }
+      },
+      "variant_id": 40757467414609,
+      "variant_inventory_management": "shopify",
+      "variant_title": "Foo \/ a",
+      "vendor": "cpc-backend-test",
+      "tax_lines": [
+        {
+          "channel_liable": false,
+          "price": "64.00",
+          "price_set": {
+            "shop_money": {
+              "amount": "64.00",
+              "currency_code": "MXN"
+            },
+            "presentment_money": {
+              "amount": "64.00",
+              "currency_code": "MXN"
+            }
+          },
+          "rate": 0.16,
+          "title": "VAT"
+        }
+      ],
+      "duties": [],
+      "discount_allocations": []
+    }
+  ],
+  "payment_terms": null,
+  "refunds": [],
+  "shipping_address": {
+    "first_name": null,
+    "address1": "Real de Provincias 9",
+    "phone": null,
+    "city": "Hermosillo",
+    "zip": "83243",
+    "province": "Sonora",
+    "country": "Mexico",
+    "last_name": "Maguey",
+    "address2": null,
+    "company": null,
+    "latitude": 29.0790095,
+    "longitude": -111.0418273,
+    "name": "Maguey",
+    "country_code": "MX",
+    "province_code": "SON"
+  },
+  "shipping_lines": [
+    {
+      "id": 4442714210385,
+      "carrier_identifier": null,
+      "code": "Standard",
+      "current_discounted_price_set": {
+        "shop_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        },
+        "presentment_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        }
+      },
+      "discounted_price": "0.00",
+      "discounted_price_set": {
+        "shop_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        },
+        "presentment_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        }
+      },
+      "is_removed": false,
+      "phone": null,
+      "price": "0.00",
+      "price_set": {
+        "shop_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        },
+        "presentment_money": {
+          "amount": "0.00",
+          "currency_code": "MXN"
+        }
+      },
+      "requested_fulfillment_service_id": null,
+      "source": "shopify",
+      "title": "Standard",
+      "tax_lines": [],
+      "discount_allocations": []
+    }
+  ],
+  "returns": []
+}
