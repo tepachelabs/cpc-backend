@@ -16,9 +16,22 @@ class NewOrderChatMessageService:
     telegram_message_parser = TelegramMessageParser()
 
     def send_message(self, order_data: OrderCreateData):
-        message = f"📦 *Nueva Orden Web Recibida*: {self.telegram_message_parser.call(order_data.order_number)}\n\n"
-        message += f"💰 *Total*: ${self.telegram_message_parser.call(order_data.total_price)}\n"
+        message = f"📦 *Nueva Orden Web Recibida*: {self.telegram_message_parser.call(str(order_data.order_number))}\n\n"
+        message += (
+            f"💰 *Total*: ${self.telegram_message_parser.call(order_data.total_price)}\n"
+        )
         message += f"🔖 *Etiquetar para*: {self.telegram_message_parser.call(order_data.customer_name)}\n"
+        message += "\n"
+        message += "*Artículos en la Orden:*\n"
+        for item in order_data.order_create_line_items:
+            message += (
+                f"{self.telegram_message_parser.call('-')}"
+                f" {self.telegram_message_parser.call(item.name)}"
+                f" x{item.quantity} "
+                f"{self.telegram_message_parser.call('(')}"
+                f"{self.telegram_message_parser.call(item.variant_name)}"
+                f"{self.telegram_message_parser.call(')')}\n"
+            )
         message += "\n"
 
         if order_data.is_local_pickup:

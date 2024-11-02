@@ -47,3 +47,15 @@ class TestOrderCreateWebhookService(TestCase):
 
         result = self.order_create_data_service.parse(data)
         self.assertIsNone(result)
+
+    def test_process__2024_10_new_version_with_delivery(self):
+        script_dir = os.path.dirname(__file__)
+        file_path = os.path.join(
+            script_dir,
+            "fixtures/order_create_webhook/shop_webhook_2024_10_v.json",
+        )
+        with open(file_path) as f:
+            data = json.load(f)
+
+        result = self.order_create_data_service.parse(data)
+        self.assertEqual(result.is_local_pickup, False)

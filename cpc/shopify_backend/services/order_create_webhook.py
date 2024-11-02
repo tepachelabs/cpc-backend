@@ -10,7 +10,10 @@ logger = logging.getLogger(__name__)
 
 class OrderCreateDataService:
     @staticmethod
-    def parse(data: dict):
+    def get_with_default(d, key, default):
+        return d.get(key) if d.get(key) is not None else default
+
+    def parse(self, data: dict):
         if data.get("source_name") != "web":
             logger.info("Order created from other source, ignoring webhook.")
             return
@@ -39,9 +42,7 @@ class OrderCreateDataService:
         customer: Optional[dict] = data.get("customer", None)
         customer_name: Optional[str] = None
         if customer is not None:
-            customer_name = (
-                f"{customer.get('first_name', '')} {customer.get('last_name', '')}"
-            )
+            customer_name = f"{self.get_with_default(customer, 'first_name', '')} {customer.get('last_name', '')}".strip()
         if any(x is None for x in (order_id, total_price, order_number)):
             raise ShopifyWebhookException(f"Order data missing in webhook data")
 
