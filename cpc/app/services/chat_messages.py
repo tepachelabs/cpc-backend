@@ -17,9 +17,7 @@ class NewOrderChatMessageService:
 
     def send_message(self, order_data: OrderCreateData):
         message = f"📦 *Nueva Orden Web Recibida*: {self.telegram_message_parser.call(str(order_data.order_number))}\n\n"
-        message += (
-            f"💰 *Total*: ${self.telegram_message_parser.call(order_data.total_price)}\n"
-        )
+        message += f"💰 *Total*: ${self.telegram_message_parser.call(order_data.total_price)}\n"
         message += f"🔖 *Etiquetar para*: {self.telegram_message_parser.call(order_data.customer_name)}\n"
         message += "\n"
         message += "*Artículos en la Orden:*\n"
